@@ -61,6 +61,12 @@ La Base de datos esta en linea, se utilizó el servicio de google Firebase para 
 
 ![Img Firebase](https://ibb.co/pWkGQND) https://ibb.co/pWkGQND
 
+
+# Cosas por arreglar
+
+1. Overflow vertical vista register_screen
+2. Mensajes de error cuando ya esta registrado o no se encuentra vinculado al servicio de autenticación de Firebase
+
 # Desarrollado Por
 
 # `Miguel Angel Parada Cañon`
