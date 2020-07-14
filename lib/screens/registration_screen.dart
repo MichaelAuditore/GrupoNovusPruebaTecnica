@@ -4,9 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:novus_app/screens/home_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+//
+final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = "register_screen";
+
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
@@ -14,8 +20,19 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   bool showSpinner = false;
   final _auth = FirebaseAuth.instance;
+  String name;
+  String lastName;
+  String numberID;
+  String phone;
   String email;
   String password;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,13 +58,61 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 48.0,
               ),
               TextField(
+                keyboardType: TextInputType.text,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  name = value;
+                },
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Enter your name'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.text,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  lastName = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your last Name'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.text,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  numberID = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your number ID'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.text,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  phone = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your mobile phone number'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   email = value;
                 },
                 decoration:
-                kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
+                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
               ),
               SizedBox(
                 height: 8.0,
@@ -76,6 +141,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
                     if (newUser != null) {
+                      // Function to storage user info into Database it was succesfully added de user to firebase
+                      _firestore.collection('users').add({
+                        'apellidos': lastName,
+                        'email': email,
+                        'nombres': name,
+                        'numeroIdentificacion': numberID,
+                        'pwd': password,
+                        'telefonoMovil': phone,
+                      });
                       Navigator.pushNamed(context, HomeScreen.id);
                     }
                     setState(() {
@@ -91,5 +165,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
       ),
     );
+  }
+
+  void getCurrentUser() async {
+    final user = await _auth.currentUser();
+    if (user != null) {
+      loggedInUser = user;
+    }
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:novus_app/services/networking.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+FirebaseUser loggedInUser;
 
 // Networking represents a class doing a request to an API to get all data
 Networking productsData = Networking();
@@ -14,12 +17,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isWaiting;
+  final _auth = FirebaseAuth.instance;
   var data;
 
   // Methods to Initialize the component when it's called and start to do the request to API
   @override
   void initState() {
     super.initState();
+    getCurrentUser();
     getData();
   }
   @override
@@ -74,6 +79,13 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     catch (e) {
       print(e);
+    }
+  }
+
+  void getCurrentUser() async {
+    final user = await _auth.currentUser();
+    if (user != null) {
+      loggedInUser = user;
     }
   }
 }
