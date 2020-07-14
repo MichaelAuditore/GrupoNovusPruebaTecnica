@@ -55,9 +55,11 @@ El modulo components esta diseñado para albergar componentes customizados que p
 
 # Base de datos
 
-La Base de datos esta en linea, se utilizó el servicio de google Firebase para la autenticación y el registro, posteriormente se planea implementar el guardado de datos tales como nombre, apellido, etc, al servicio Firestore, el cual cuenta con un gestor base de datos no relacional. (Solo que no me alcanzó el tiempo);
+La Base de datos esta en linea, se utilizó el servicio de google Firebase para la autenticación y el registro, posteriormente se implementa el guardado de datos tales como nombre, apellido, etc, al servicio Firestore, el cual cuenta con un gestor base de datos no relacional.
 
-![alt text](https://ibb.co/pWkGQND)
+![Img FireStore](https://imgur.com/PjqzwUa) https://imgur.com/PjqzwUa
+
+![Img Firebase](https://ibb.co/pWkGQND) https://ibb.co/pWkGQND
 
 # Desarrollado Por
 
