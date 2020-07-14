@@ -13,20 +13,21 @@ Esta aplicacion consiste en 4 vistas que se pueden encontrar en el modulo **scre
 
     Esta vista muestra dos botones que redireccionan a las vistas `LogIn` y `Register`. Diseñada como menu para acceder a la aplicacion
 
- ![Img Welcome Screen](https://ibb.co/H4Vp3k7) 
+ ![Img Welcome Screen](https://ibb.co/H4Vp3k7) https://ibb.co/H4Vp3k7
 
 **2.** **login_screen**
 
     Esta vista muestra un form para el ingreso a la aplicacion consiste en el acceso mediante email y pwd otorgada por el usuario
 
-![Img Login Screen](https://ibb.co/nQ1SqDL)
+![Img Login Screen](https://ibb.co/nQ1SqDL) https://ibb.co/nQ1SqDL
     
 
 **3.** **register_screen**
 
     Esta vista muestra un form para el registro a la aplicacion consiste en ka digitacion de email y pwd para otorgar permisos de acceso mediante Firebase
 
-![Img Register Screen](https://ibb.co/VQpG9Cp)
+
+![Img Register Screen](https://ibb.co/VQpG9Cp) https://ibb.co/VQpG9Cp
     
 
 **4.** **home_screen**
@@ -36,7 +37,7 @@ Esta aplicacion consiste en 4 vistas que se pueden encontrar en el modulo **scre
     Cabe recalcar que los datos obtenidos tienen formato JSON(Javascript Object Notation)
 
 
-![Img Home Screen](https://ibb.co/DwFVd3J)
+![Img Home Screen](https://ibb.co/DwFVd3J) https://ibb.co/DwFVd3J
     
 
 # Services
